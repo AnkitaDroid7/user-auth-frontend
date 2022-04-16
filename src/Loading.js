@@ -1,17 +1,9 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-function Loading({ size = 100 }) {
+function Loading({ size = 100, className }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <div className={className}>
       <Spinner
         style={{
           width: size,
