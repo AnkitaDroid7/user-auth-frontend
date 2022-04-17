@@ -7,6 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import 'react-phone-number-input/style.css'
 import PhoneInput from "react-phone-number-input";
 import { BookIcon } from './svgs';
+import { CONTACT_EMAIL, PAYMENT_NUMBER } from './config';
 
 function CreateBooking() {
 
@@ -138,7 +139,7 @@ function CreateBooking() {
                       onChange={(val) => setBookingInfo({ ...bookingInfo, phonenumber: val })} />
                   </Form.Group>
 
-                  <Form.Group className='mb-2 col-9' controlId="service">
+                  <Form.Group className='mb-2 col-6' controlId="service">
                     <Form.Label>Service Type</Form.Label>
                     <Form.Control as="select"
                       type="select"
@@ -148,14 +149,25 @@ function CreateBooking() {
                         setBookingInfo({ ...bookingInfo, servicetype: e.target.value });
                       }}
                     >
-                      <option>Career Consulting (1h) - ₹ 50</option>
-                      <option>Mock Interview (1h) - ₹ 100</option>
-                      <option>Devops Consulting (1h) - ₹ 100</option>
+                      <option>Career Consulting</option>
+                      <option>Mock Interview</option>
+                      <option>Devops Consulting</option>
                       <option disabled>Job support will not ne entertained</option>
                     </Form.Control>
                     <Form.Text className="text-muted">
-                      Payment can be done via Phonepe, G-Pay.
+                      Payment can be done via Phonepe, G-Pay to {PAYMENT_NUMBER}.<br />
+                      Through PayPal send it to Deekshithsn
                     </Form.Text>
+                  </Form.Group>
+                  <Form.Group className='col-6'>
+                    <Form.Label>Cost</Form.Label>
+                    <Card>
+                      <Card.Body className='bg-light'>
+                        <div>Career Consulting ( 1hour ) - ₹ 500</div>
+                        <div>Mock Interview ( 1hour ) - ₹ 500</div>
+                        <div>Devops Consulting ( 1hour ) - ₹ 500</div>
+                      </Card.Body>
+                    </Card>
                   </Form.Group>
                   <Form.Group className='mb-2 col-9' controlId="location">
                     <Form.Label>Location</Form.Label>
@@ -186,6 +198,9 @@ function CreateBooking() {
 
         </Col>
       </Row>
+      <div className='text-center py-2'>
+        For any further queries contact <a style={{ textDecoration: 'none' }} href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </div>
       <Modal show={showModal} onHide={setShowModal}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Details</Modal.Title>
